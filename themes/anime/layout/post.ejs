@@ -1,0 +1,43 @@
+<%
+  /* 横幅取景：front-matter 的 cover_position 决定纵向位置
+     0% = 图片最上沿对齐，50% = 正中（旧行为），100% = 最下沿对齐；也可写 top / bottom / center 25%
+     不写就用 style.css 里 .post-banner 的默认值 */
+  var bannerImage = page.cover || page.cover_thumb || theme.background;
+  var bannerPos = page.cover_position ? String(page.cover_position).trim() : '';
+  if (bannerPos && bannerPos.indexOf(' ') === -1) bannerPos = 'center ' + bannerPos;
+%>
+<header class="post-banner" style="background-image: url('<%- url_for(bannerImage) %>')<% if (bannerPos) { %>; --banner-pos: <%- bannerPos %><% } %>">
+  <div class="post-banner-content">
+    <h1 class="post-title"><%= page.title %></h1>
+    <div class="post-meta">
+      <span class="meta-item"><i class="fa-regular fa-calendar"></i> <%= date(page.date, 'YYYY-MM-DD') %></span>
+      <% if (date(page.updated, 'YYYY-MM-DD') > date(page.date, 'YYYY-MM-DD')) { %>
+      <span class="meta-item"><i class="fa-regular fa-clock"></i> 更新于 <%= date(page.updated, 'YYYY-MM-DD') %></span>
+      <% } %>
+      <% if (page.categories && page.categories.length) { %>
+      <span class="meta-item"><i class="fa-regular fa-folder-open"></i>
+        <% page.categories.each(function(cat) { %><a href="<%- url_for(cat.path) %>"><%= cat.name %></a><% }) %>
+      </span>
+      <% } %>
+      <% if (page.tags && page.tags.length) { %>
+      <span class="meta-item"><i class="fa-solid fa-tags"></i>
+        <% page.tags.each(function(tag, i) { %><% if (i) { %>·<% } %><a href="<%- url_for(tag.path) %>" class="tag-link"><%= tag.name %></a><% }) %>
+      </span>
+      <% } %>
+    </div>
+  </div>
+</header>
+<div class="post-layout container">
+  <aside class="post-sidebar" id="post-sidebar">
+    <%- partial('_partial/card') %>
+    <div class="toc-card card" id="toc-card">
+      <h3 class="toc-title"><i class="fa-solid fa-list"></i> 目录</h3>
+      <%- toc(page.content, { class: 'toc' }) %>
+    </div>
+  </aside>
+  <article class="post-content card">
+    <div class="markdown-body">
+      <%- page.content %>
+    </div>
+  </article>
+</div>

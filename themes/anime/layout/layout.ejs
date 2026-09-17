@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<head>
+  <%- partial('_partial/head') %>
+</head>
+<body>
+  <%- partial('_partial/header') %>
+  <main id="main">
+    <%- body %>
+  </main>
+  <%- partial('_partial/footer') %>
+  <script>var ROOT = '<%= config.root %>';</script>
+  <script src="<%- url_for('/js/main.js') %>"></script>
+  <% if (is_home()) { %>
+  <script src="<%- url_for('/js/home.js') %>"></script>
+  <script src="<%- url_for('/js/category-filter.js') %>"></script>
+  <% } %>
+  <% if (is_post() || is_page()) { %>
+  <script src="<%- url_for('/js/toc.js') %>"></script>
+  <script src="<%- url_for('/js/codeblock.js') %>"></script>
+  <% } %>
+</body>
+</html>

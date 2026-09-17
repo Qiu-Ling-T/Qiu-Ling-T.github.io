@@ -1,0 +1,7 @@
+<% if (page.total && page.total > 1) { %>
+<nav class="pagination">
+  <% if (page.prev) { %><a class="page-btn" href="<%- url_for(page.prev_link) %>"><i class="fa-solid fa-chevron-left"></i> 上一页</a><% } %>
+  <span class="page-info"><%= page.current %> / <%= page.total %></span>
+  <% if (page.next) { %><a class="page-btn" href="<%- url_for(page.next_link) %>">下一页 <i class="fa-solid fa-chevron-right"></i></a><% } %>
+</nav>
+<% } %>

@@ -1,0 +1,23 @@
+<% page.posts.each(function(post) { %>
+<a class="post-card" href="<%- url_for(post.path) %>"
+   data-categories="<%= post.categories.map(function(c) { return c.name; }).join('|') %>"
+   style="background-image: url('<%- url_for(post.cover_thumb || post.cover || theme.background_thumb || theme.background) %>')">
+  <div class="post-card-body">
+    <h2 class="post-card-title"><%= post.title %></h2>
+    <div class="post-card-meta">
+      <span><i class="fa-regular fa-calendar"></i> <%= date(post.date, 'YYYY-MM-DD') %></span>
+      <% if (post.categories && post.categories.length) { %>
+      <span class="post-card-cat"><i class="fa-regular fa-folder-open"></i>
+        <% post.categories.each(function(cat) { %><%= cat.name %><% }) %>
+      </span>
+      <% } %>
+      <% if (post.tags && post.tags.length) { %>
+      <span class="post-card-tags"><i class="fa-solid fa-tags"></i>
+        <% post.tags.each(function(tag, i) { %><% if (i) { %>·<% } %><%= tag.name %><% }) %>
+      </span>
+      <% } %>
+    </div>
+  </div>
+</a>
+<% }) %>
+<%- partial('pagination') %>

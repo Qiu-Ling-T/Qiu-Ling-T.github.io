@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
+title: QiuLing 的博客
+subtitle: 记录生活与技术
+description: 二次元与技术向的个人博客
+keywords: 博客,二次元,技术
+author: QiuLing
+language: zh-CN
 timezone: ''
 
 # URL
@@ -49,7 +49,7 @@ highlight:
   auto_detect: false
   tab_replace: ''
   wrap: true
-  hljs: false
+  hljs: true
 prismjs:
   preprocess: true
   line_number: true
@@ -96,7 +96,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: anime
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

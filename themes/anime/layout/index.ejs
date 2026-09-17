@@ -1,0 +1,40 @@
+<section id="hero" style="background-image: url('<%- url_for(theme.background) %>')">
+  <canvas id="hero-petals"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-avatar">
+      <%- partial('_partial/avatar') %>
+    </div>
+    <div class="hero-name"><%= config.title %></div>
+    <div class="hero-quote" id="hero-quote"><%= theme.sentences[0] %></div>
+  </div>
+  <a class="hero-scroll" id="hero-scroll" href="#posts" aria-label="向下滚动"><i class="fa-solid fa-angle-down"></i></a>
+</section>
+<section id="posts">
+  <div class="container">
+    <div class="posts-head">
+      <h2><i class="fa-regular fa-newspaper"></i> 文章目录</h2>
+    </div>
+    <div class="cat-tabs" id="cat-tabs">
+      <button class="cat-tab active" type="button" data-cat="all">全部</button>
+      <% theme.categories.forEach(function(c) { %>
+      <button class="cat-tab" type="button" data-cat="<%= c %>"><%= c %></button>
+      <% }) %>
+    </div>
+    <div class="posts-grid">
+      <%- partial('_partial/post-list') %>
+    </div>
+    <div class="posts-empty" id="posts-empty" style="display: none;">这个分类下还没有文章~</div>
+  </div>
+</section>
+<script>
+window.ANIME = {
+  sentences: <%- JSON.stringify(theme.sentences) %>,
+  petals: {
+    enable: <%- theme.petals.enable %>,
+    maxCount: <%- theme.petals.maxCount %>,
+    color1: '<%- theme.petals.color1 %>',
+    color2: '<%- theme.petals.color2 %>'
+  }
+};
+</script>

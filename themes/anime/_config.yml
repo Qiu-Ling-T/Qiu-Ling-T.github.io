@@ -1,0 +1,45 @@
+# ========== 二次元风主题 anime 配置 ==========
+
+# 头像（相对于站点根路径，放在 source/images/ 下），由 tools/optimize_images.py 生成
+avatar: /images/avatar.jpg
+# 高清屏用的 2 倍头像（留空则高清屏复用上面那张）
+avatar_2x: /images/avatar@2x.jpg
+
+# 首页动态图背景（从 wallpaper 解包得到，见 scripts/unpack_wallpaper.py）
+background: /images/background.jpg
+# 壁纸的卡片缩略图（没写 cover 的文章，首页卡片用这张，同样由 tools/optimize_images.py 生成）
+background_thumb: /images/background-thumb.jpg
+
+# 个人卡片签名（支持 markdown）
+signature: |
+  寻找所谓“意义”
+
+# 页脚起始年份
+footer:
+  since: 2026
+
+# 首页随机句子池（每次刷新随机显示一句）
+sentences:
+  - 时光流转，愿你与珍爱之人能够再度重逢。——《可塑性记忆》
+  - 有了想说的话，说不出口的话变多了。——《正相反的你与我》
+  - 不存在不必送达的信。——《紫罗兰永恒花园》
+
+# 首页文章目录的分类筛选（显示顺序：全部 + 这里的四个分类）
+categories:
+  - 动画
+  - 游戏
+  - 生活
+  - 技术
+
+# 社交链接（icon 为 Font Awesome 图标名，如 github / bilibili / heart）
+social:
+  - name: GitHub
+    link: https://github.com/Qiu-Ling-T
+    icon: github
+
+# 首页樱花花瓣粒子
+petals:
+  enable: true
+  maxCount: 120      # 屏幕上最多花瓣数
+  color1: 255,255,255   # 白色
+  color2: 255,192,248   # 樱花粉

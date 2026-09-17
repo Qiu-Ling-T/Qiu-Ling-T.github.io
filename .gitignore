@@ -6,3 +6,21 @@ node_modules/
 public/
 .deploy*/
 _multiconfig.yml
+
+# ---------- Python ----------
+__pycache__/
+*.pyc
+
+# ---------- 仅本地保留的素材 ----------
+# 下面这些站点构建用不到，只在本地留档，避免再次被误提交（本地文件都还在）
+# 壁纸素材：只保留流程文档、解包脚本和工程配置，原始包与解包产物都不进仓库
+wallpaper/*
+!wallpaper/README.md
+!wallpaper/unpack_wallpaper.py
+!wallpaper/project.json
+# 封面原图备份：由 tools/optimize_images.py 生成
+assets/covers/
+# 尚未整理进 source/images/ 的零散素材
+picture/
+# 本项目已改用 anime 主题，landscape 的默认配置留着没用
+_config.landscape.yml
